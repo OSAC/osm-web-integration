@@ -10,6 +10,7 @@
 
 
 *** Intro to HTML
+
 Let's start with barebones html file
 
 #+begin_src html
@@ -37,6 +38,7 @@ Let's start with barebones html file
 - We can add comments inside =<!--= and =-->= blocks
 
 *** Content Tags
+
 Lets now add something to our page
 
 Place these inside the =body= tags in above html document.
@@ -50,6 +52,7 @@ Place these inside the =body= tags in above html document.
 #+end_src
 
 *** Intro to CSS
+
 Lets stylize our html with some css,
 after the =head= tag closes, and before the beginning of =body= tag, add these
 
@@ -78,6 +81,7 @@ Similarly, you can see basic CSS components to know how these css properties are
 - https://www.w3schools.com/css
 
 *** More HTML
+
 Lets now dive into content grouping and see the =div= tags!
 #+begin_src html
   <body>
@@ -109,6 +113,7 @@ Lets also add some =class= and =id= properties
 #+end_src
 
 *** More CSS
+
 Now lets learn to stylize the new stuffs we added in above HTML!
 
 #+begin_src html
@@ -134,6 +139,7 @@ Now lets learn to stylize the new stuffs we added in above HTML!
 #+end_src
 
 *** Separating and Linking files
+
 Generally we separate the HTML from CSS and JS. They have seprate jobs;
 - HTML defines the structure
 - CSS declares the styling, animations etc
@@ -162,14 +168,13 @@ Generally we separate the HTML from CSS and JS. They have seprate jobs;
      }
 #+end_src
 
-Now lets link this new file to our html document, so browser knows to load them together,
+Now lets link this new file to =head= section of our html document, so browser knows to load them together,
 
 #+begin_src html
-  <head>
-    <title>Page Title</title>
-    <link rel=style
-  </head>
-
+<head>
+  <title>OSM Integration</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
 #+end_src
 
 *** How to Learn
@@ -188,34 +193,40 @@ Web Development Roadmap
 - Roadmap.sh
 
 *** Q/A round on WebDev
-- Questions about
+- Questions about above code, staring out web dev in general, or osm leaflet capabilities
+
 *** Initial notes
-Those who have done the basics, no need to follow the tutorial, but try to improve our design, the people coming up with best designs will get chocolate at the end
+Those who have done the basics, no need to follow the tutorial, but try to improve our design, the people coming up with best designs will get rewards at the end
 
 ** Part Two : Javascript Basics
 *** Linking Js file and printing hello world
+- make sure to link our custom js file at last of body tag not before or at the head
 *** Cover variable string, list
 *** Cover Functions
 *** Cover Classes and methods
 ** Part Three: Integration with LeafLet
+Lets follow the example/tutorial section in offfical leaflet site:
+https://leafletjs.com/examples/quick-start/
+
 *** Linking leaflet library
-Leaflet library gives us =css= and =js= file to integrate in our page.
-The integration is similar to how we integrated our custom js and css files.
+
+- Leaflet library gives us =css= and =js= file to integrate in our page.
+- The integration is similar to how we integrated our custom js and css files.
+- Make sure to add leaflet css and js files before our custom js and css files.
 
 #+begin_src html
 <head>
   <title>OSM Integration</title>
 
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
+  <link rel="stylesheet" href="style.css">
 </head>
 #+end_src
 
 *** Adding a simple map
+
 - Leaflet library consists of premade classes and function for us to use in integrating maps quick and easy.
 - The main class it exposes is =L= (L for leaflet), it has map method which returns a =map= object.
 - Show how to find coordinate of you favorite place using gmaps or osm map
@@ -246,12 +257,14 @@ body {
 #+end_src
 
 *** Adding custom markers
+
 #+begin_src javascript
   // Now add a blue marker
   var marker = L.marker(ascolCoordinate).addTo(map);
 #+end_src
 
 *** Adding popup in marker
+
 #+begin_src javascript
   // Show simple text popup on that marker
   marker.bindPopup("<b>This is my college :)</b>").openPopup();
@@ -260,6 +273,7 @@ body {
 ***
 
 *** Tracking map clicks
+
 #+begin_src js
   // Create a click tracker that detects the coordinate you click on the map
   var popup = L.popup();
@@ -273,33 +287,37 @@ body {
 #+end_src
 
 ** Final Code
+
 The code inside the resulting three files: index.html, style.css and script.js is follows;
 
 file : index.html
 #+begin_src html
-<!doctype html>
+  <!doctype html>
 
-<head>
-  <title>OSM Integration</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <head>
+    <title>OSM Integration</title>
 
-</head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-<body>
-    <div class="title">
-    <h1>Hello World!</h1>
-    <div>
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-    <div class="content">
-    <p id="para"> This is my first html page </p>
-    <p> Lets now integrate the osm map below </p>
-    <div>
+  <body>
+      <div class="title">
+      <h1>Hello World!</h1>
+      <div>
 
-   <div id="map"></div>
-</body>
-</html>
+      <div class="content">
+      <p id="para"> This is my first html page </p>
+      <p> Lets now integrate the osm map below </p>
+      <div>
+
+     <div id="map"></div>
+
+     <script src="script.js"></script>
+  </body>
+  </html>
 #+end_src
 
 file: style.css
