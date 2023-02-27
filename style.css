@@ -1,0 +1,26 @@
+h1 {
+  text-align: center; /* Centers the text inside the h1 element */
+}
+
+p {
+  font-family: Arial, sans-serif; /* Changes the font family of the paragraph text */
+  font-size: 20px; /* Increases the font size of the paragraph text */
+  color: #333; /* Changes the color of the paragraph text to a dark gray */
+}
+
+.title {
+  color: red;
+}
+
+#para {
+  font-size: 30px;
+}
+
+#map {
+  height: 300px;
+  width: 400px;
+}
+
+body {
+  margin: 30px;
+}
